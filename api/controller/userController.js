@@ -1,26 +1,17 @@
 import mongoose from 'mongoose'
 import userModel from '../model/userModel'
- 
-const user = mongoose.model('UserInfo', userModel);
-
-
-
-
-import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
-const UserData = mongoose.model('UserInfo');
+const UserData = mongoose.model('UserInfo', userModel);
 
 //user signup
 exports.userSignup = (req, res) => {
   console.log("hiii");
   console.log(req.body);
 
-  // // const email = req.body.email;
-  // req.checkBody('email', 'Email is not valid').isEmail();
-  // const error = req.validationErrors();
+  
 
   const { firstname, lastname, email, 
-    college, year_of_passing, phonenumber,
+    college, branch, year_of_passing, phonenumber,
     batch, city, password } = req.body;
 
     const params = {
@@ -28,16 +19,16 @@ exports.userSignup = (req, res) => {
       lastname,
       email,
       college,
+      branch,
       year_of_passing,
       phonenumber,
       batch,
       city,
       password
     }
+  // req.checkBody('email', 'Email is not valid').isEmail();
+  // const error = req.validationErrors();
 
-    if(error){
-      res.send(error);
-    }else{
       UserData.find({email: req.body.email})
       .then(data => {
         if(data != null && data != ''){
@@ -64,4 +55,3 @@ exports.userSignup = (req, res) => {
       })
     };
 
-  }
