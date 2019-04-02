@@ -1,4 +1,5 @@
 import express from "express";
+import routes from './src/routes/downloadRoutes'
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import expressValidator from "express-validator";
@@ -6,18 +7,31 @@ import expressValidator from "express-validator";
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
-//body-parser
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// //body-parser
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
-// app.use(expressValidator());
+// // app.use(expressValidator());
 
+
+
+// //created model loading here
+// const Users = require('./api/model/userModel');
+
+// const routes = require('./api/routes/routes');
+// routes(app);
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:/UserData');
+
+//body parser
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+
+routes(app)
 
 //set port
 app.set('port', (process.env.PORT || 3002));

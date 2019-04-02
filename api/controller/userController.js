@@ -1,3 +1,11 @@
+import mongoose from 'mongoose'
+import userModel from '../model/userModel'
+ 
+const user = mongoose.model('UserInfo', userModel);
+
+
+
+
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 const UserData = mongoose.model('UserInfo');
@@ -7,9 +15,9 @@ exports.userSignup = (req, res) => {
   console.log("hiii");
   console.log(req.body);
 
-  // const email = req.body.email;
-  req.checkBody('email', 'Email is not valid').isEmail();
-  const error = req.validationErrors();
+  // // const email = req.body.email;
+  // req.checkBody('email', 'Email is not valid').isEmail();
+  // const error = req.validationErrors();
 
   const { firstname, lastname, email, 
     college, year_of_passing, phonenumber,

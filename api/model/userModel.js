@@ -1,10 +1,8 @@
-'use strict';
+import mongoose from 'mongoose'
+ 
+const Schema = mongoose.Schema
 
-var _mongoose = require('mongoose');
-
-// var Schema = mongoose.Schema;
-
-var UserSchema = new _mongoose.Schema({
+var UserSchema = new Schema({
   firstname: {
     type: String,
     required: true
@@ -18,6 +16,10 @@ var UserSchema = new _mongoose.Schema({
     required: true
   },
   college: {
+    type: String,
+    required: true
+  },
+  branch: {
     type: String,
     required: true
   },
@@ -43,4 +45,5 @@ var UserSchema = new _mongoose.Schema({
   }
 });
 
-module.exports = (0, _mongoose.model)('UserInfo', UserSchema);
+export default UserSchema;
+// module.exports = mongoose.model('UserInfo', UserSchema);
