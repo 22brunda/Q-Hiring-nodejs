@@ -1,8 +1,10 @@
-import { model, Schema } from 'mongoose';
+'use strict';
+
+var _mongoose = require('mongoose');
 
 // var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+var UserSchema = new _mongoose.Schema({
   firstname: {
     type: String,
     required: true
@@ -41,4 +43,4 @@ var UserSchema = new Schema({
   }
 });
 
-module.exports = model('UserInfo', UserSchema);
+module.exports = (0, _mongoose.model)('UserInfo', UserSchema);
